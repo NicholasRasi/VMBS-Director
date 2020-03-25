@@ -1,0 +1,40 @@
+- name: Run
+  hosts: all
+  gather_facts: true
+  strategy: free
+  tasks:
+    - name: Clone cloud-benchmark repository
+      git:
+        repo: 'https://github.com/NicholasRasi/cloud-benchmark.git'
+        dest: cloud-benchmark
+        force: yes
+    - name: Install virtualenv dependencies
+      pip:
+        requirements: "{{ ansible_env.HOME }}/cloud-benchmark/requirements.txt"
+        virtualenv: "{{ ansible_env.HOME }}/cloud-benchmark/env"
+        virtualenv_python: python3.6
+        extra_args: --no-cache-dir
+    - name: Copy config file cloud-benchmark
+      copy:
+        src: vars/config_benchmark.yml
+        dest: "{{ ansible_env.HOME }}/cloud-benchmark/config_benchmark.yml"
+    - name: Clone cloud-benchmark-tools repository
+      git:
+        repo: 'https://github.com/NicholasRasi/cloud-benchmark-tools.git'
+        dest: cloud-benchmark-tools
+        force: yes
+    - name: Install virtualenv dependencies cloud-benchmark-tools
+      pip:
+        requirements: "{{ ansible_env.HOME }}/cloud-benchmark-tools/requirements.txt"
+        virtualenv: "{{ ansible_env.HOME }}/cloud-benchmark-tools/env"
+        virtualenv_python: python3.6
+        extra_args: --no-cache-dir
+    - name: Copy config file cloud-benchmark-tools
+      copy:
+        src: vars/config_benchmark_tools.yml
+        dest: "{{ ansible_env.HOME }}/cloud-benchmark-tools/config_benchmark_tools.yml"
+    - name: Copy startup script
+      copy:
+        src: cloud_performance.sh
+        dest: "{{ ansible_env.HOME }}/cloud_performance.sh"
+        mode: '0777'

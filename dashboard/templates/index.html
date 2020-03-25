@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cloud Performance Dashboard</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+          integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+
+    <style>
+        .container {
+            max-width: 100%;
+        }
+        body {
+            background-color: #f9f9f9;;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="h3 mt-4">VMs</div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="alert alert-primary" role="alert">
+                <p>VM Tot</p>
+                <h1 id="tot-vms"></h1>
+            </div>
+        </div>
+        <div class="col">
+            <div class="alert alert-secondary" role="alert">
+                <p>Benchmarks</p>
+                <h1 id="tot-bench"></h1>
+            </div>
+        </div>
+        <div class="col">
+            <div class="alert alert-info" role="alert">
+                <p>Microbenchmarks</p>
+                <h1 id="tot-microbench"></h1>
+            </div>
+        </div>
+        <div class="col">
+            <div class="alert alert-danger" role="alert">
+                <p>Errors</p>
+                <h1 id="tot-errors"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="h3 mt-4">Bins</div>
+            <table id="table-bins">
+                <thead>
+                <tr>
+                    <th data-field="id">Id</th>
+                    <th data-field="desc">Desc</th>
+                    <th data-field="values">Values</th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+        integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+</script>
+<script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.16/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+<script>
+    function valuesFormatter(data) {
+        return data.length;
+    }
+
+    var $tableBins = $('#table-bins');
+    var host = '{{ bin_database_url }}';
+
+    $(function () {
+        $tableBins.bootstrapTable({
+            url: host + '/all',
+            dataField: 'bins',
+            columns: [{
+                field: 'id',
+                title: 'Id',
+                sortable: true
+            }, {
+                field: 'updated',
+                title: 'Updated',
+                sortable: true
+            }, {
+                field: 'values',
+                title: 'Values',
+                formatter: valuesFormatter
+            }]
+        })
+    })
+</script>
+
+<script>
+    $(function () {
+        $.getJSON(host + "/all", function (data) {
+            console.log(data);
+
+            $("#tot-vms").text(data.bins.length);
+
+            let countBench = 0;
+            let done = 0;
+            let error = 0;
+            for (let i = 0; i < data.bins.length; i++) {
+                for (let j = 0; j < data.bins[i].values.length; j++) {
+                    countBench++;
+                    for (let k = 0; k < data.bins[i].values[j].benchmarks.length; k++) {
+                        if (data.bins[i].values[j].benchmarks[k].result.retcode === 0) {
+                            done++;
+                        } else {
+                            error++;
+                        }
+                    }
+                }
+            }
+            $("#tot-bench").text(countBench);
+            $("#tot-microbench").text(done);
+            $("#tot-errors").text(error);
+
+        });
+
+
+    });
+</script>
+</body>
+
+</html>

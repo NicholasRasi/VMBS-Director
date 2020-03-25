@@ -1,0 +1,9 @@
+- name: Run
+  hosts: all
+  gather_facts: false
+  strategy: free
+  tasks:
+    - name: Run benchmark
+      shell: ./cloud_performance.sh
+      async: 100
+      poll: 0

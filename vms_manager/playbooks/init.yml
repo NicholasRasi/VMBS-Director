@@ -1,0 +1,76 @@
+- name: Run initialization
+  hosts: all
+  gather_facts: true
+  strategy: free
+  tasks:
+    - name: Install dependencies
+      become: yes
+      apt:
+        update_cache: yes
+        pkg:
+        - git
+        - curl
+        - build-essential
+        - python-dev
+        - python3-dev
+        - python-pip
+        - python-virtualenv
+    - name: Add sysbench repo
+      shell: curl -s https://packagecloud.io/install/repositories/akopytov/sysbench/script.deb.sh | sudo bash
+    - name: Install sysbench
+      become: yes
+      apt:
+        pkg:
+          - sysbench=1.0.19-1
+    - name: Clone cloud-benchmark repository
+      git:
+        repo: 'https://github.com/NicholasRasi/cloud-benchmark.git'
+        dest: cloud-benchmark
+        force: yes
+    - name: Make wrk
+      command:
+        cmd: make
+        chdir: "{{ ansible_env.HOME }}/cloud-benchmark/benchmarks/wrk"
+    - name: Install wrk
+      become: yes
+      command:
+        cmd: mv wrk /usr/local/bin/wrk
+        chdir: "{{ ansible_env.HOME }}/cloud-benchmark/benchmarks/wrk"
+    - name: Delete env folder cloud-benchmark
+      file:
+        path: "{{ ansible_env.HOME }}/cloud-benchmark/env"
+        state: absent
+    - name: Install virtualenv dependencies cloud-benchmark
+      pip:
+        requirements: "{{ ansible_env.HOME }}/cloud-benchmark/requirements.txt"
+        virtualenv: "{{ ansible_env.HOME }}/cloud-benchmark/env"
+        virtualenv_python: python3.6
+        extra_args: --no-cache-dir
+    - name: Copy config file cloud-benchmark
+      copy:
+        src: vars/config_benchmark.yml
+        dest: "{{ ansible_env.HOME }}/cloud-benchmark/config_benchmark.yml"
+    - name: Clone cloud-benchmark-tools repository
+      git:
+        repo: 'https://github.com/NicholasRasi/cloud-benchmark-tools.git'
+        dest: cloud-benchmark-tools
+        force: yes
+    - name: Delete env folder cloud-benchmark-tools
+      file:
+        path: "{{ ansible_env.HOME }}/cloud-benchmark-tools/env"
+        state: absent
+    - name: Install virtualenv dependencies cloud-benchmark-tools
+      pip:
+        requirements: "{{ ansible_env.HOME }}/cloud-benchmark-tools/requirements.txt"
+        virtualenv: "{{ ansible_env.HOME }}/cloud-benchmark-tools/env"
+        virtualenv_python: python3.6
+        extra_args: --no-cache-dir
+    - name: Copy config file cloud-benchmark-tools
+      copy:
+        src: vars/config_benchmark_tools.yml
+        dest: "{{ ansible_env.HOME }}/cloud-benchmark-tools/config_benchmark_tools.yml"
+    - name: Copy benchmark startup script
+      copy:
+        src: cloud_performance.sh
+        dest: "{{ ansible_env.HOME }}/cloud_performance.sh"
+        mode: '0777'

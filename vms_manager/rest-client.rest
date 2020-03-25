@@ -1,0 +1,39 @@
+### Start
+POST http://{{host}}:{{port}}/start
+Content-Type: application/json
+
+{
+  "provider": "AWS",
+  "region": "eu-central-1",
+  "id": "i-04ccbdfc124d91116"
+}
+
+### Stop
+POST http://{{host}}:{{port}}/stop
+Content-Type: application/json
+
+{
+  "provider": "AWS",
+  "region": "eu-central-1",
+  "id": "i-04ccbdfc124d91116"
+}
+
+### Start
+POST http://{{host}}:{{port}}/start
+Content-Type: application/json
+
+{
+  "provider": "AZURE",
+  "id": "m3-cb"
+}
+
+### Stop
+POST http://{{host}}:{{port}}/stop
+Content-Type: application/json
+
+{
+  "provider": "AZURE",
+  "id": "m3-cb"
+}
+
+###
