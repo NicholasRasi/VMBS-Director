@@ -5,5 +5,5 @@
   tasks:
     - name: Run benchmark
       shell: ./cloud_performance.sh
-      async: 100
+      async: 2592000 # 60*60*24*30 – 1 month
       poll: 0
