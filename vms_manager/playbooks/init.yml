@@ -21,7 +21,7 @@
       become: yes
       apt:
         pkg:
-          - sysbench=1.0.19-1
+          - sysbench
     - name: Delete cloud-benchmark folder
       file:
         path: "{{ ansible_env.HOME }}/cloud-benchmark/"

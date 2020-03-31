@@ -141,4 +141,5 @@ vars/
 config.yml
 rest-client.env.json
 config_vms_manager.yml
+config_vms_manager_test.yml
 config_dashboard.yml
