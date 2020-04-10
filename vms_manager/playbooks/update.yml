@@ -6,15 +6,16 @@
     - name: Clone cloud-benchmark repository
       git:
         repo: 'https://github.com/NicholasRasi/cloud-benchmark.git'
+        version: 'arch_arm'
         dest: cloud-benchmark
         force: yes
-    - name: Install virtualenv dependencies
+    - name: Install virtualenv dependencies (cloud-benchmark)
       pip:
         requirements: "{{ ansible_env.HOME }}/cloud-benchmark/requirements.txt"
         virtualenv: "{{ ansible_env.HOME }}/cloud-benchmark/env"
         virtualenv_python: python3.6
         extra_args: --no-cache-dir
-    - name: Copy config file cloud-benchmark
+    - name: Copy config file (cloud-benchmark)
       copy:
         src: vars/config_benchmark.yml
         dest: "{{ ansible_env.HOME }}/cloud-benchmark/config_benchmark.yml"
@@ -23,13 +24,13 @@
         repo: 'https://github.com/NicholasRasi/cloud-benchmark-tools.git'
         dest: cloud-benchmark-tools
         force: yes
-    - name: Install virtualenv dependencies cloud-benchmark-tools
+    - name: Install virtualenv dependencies (cloud-benchmark-tools)
       pip:
         requirements: "{{ ansible_env.HOME }}/cloud-benchmark-tools/requirements.txt"
         virtualenv: "{{ ansible_env.HOME }}/cloud-benchmark-tools/env"
         virtualenv_python: python3.6
         extra_args: --no-cache-dir
-    - name: Copy config file cloud-benchmark-tools
+    - name: Copy config file (cloud-benchmark-tools)
       copy:
         src: vars/config_benchmark_tools.yml
         dest: "{{ ansible_env.HOME }}/cloud-benchmark-tools/config_benchmark_tools.yml"
