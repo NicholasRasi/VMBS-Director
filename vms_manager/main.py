@@ -54,7 +54,7 @@ if __name__ == "__main__":
 
     # read config variables
     az_resource_group_name = None
-    if cfg["az_resource_group_name"]:
+    if "az_resource_group_name" in cfg:
         az_resource_group_name = cfg["az_resource_group_name"]
 
     parser = argparse.ArgumentParser()
