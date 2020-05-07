@@ -9,18 +9,22 @@ app = Flask(__name__)
 
 @app.route('/<command>', methods=['POST'])
 def post_command(command):
-    req = request.get_json()
-    provider = req["provider"]
-    id = req["id"]
-    if provider == "AWS":
-        region = req["region"]
-        aws(command, region, [id])
-        return {"msg": "ok"}, 200
-    elif provider == "AZURE":
-        if command == "stop":
-            command = "deallocate"
-        azure(command, az_resource_group_name, [id])
-        return {"msg": "ok"}, 200
+    try:
+        req = request.get_json()
+        provider = req["provider"]
+        id = req["id"]
+        if provider == "AWS":
+            region = req["region"]
+            aws(command, region, [id])
+            return {"msg": "ok"}, 200
+        elif provider == "AZURE":
+            if command == "stop":
+                command = "deallocate"
+            az_resource_group_name = req["group"]
+            azure(command, az_resource_group_name, [id])
+            return {"msg": "ok"}, 200
+    except Exception as e:
+        print(str(e))
 
 def aws(command, region, ids):
     cli_command = ["aws", "ec2", command + "-instances", "--region", region, "--instance-ids"]
@@ -51,11 +55,6 @@ if __name__ == "__main__":
     # open config file
     with open("config_vms_manager.yml", 'r') as ymlfile:
         cfg = yaml.load(ymlfile, Loader=yaml.FullLoader)
-
-    # read config variables
-    az_resource_group_name = None
-    if "az_resource_group_name" in cfg:
-        az_resource_group_name = cfg["az_resource_group_name"]
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--server', dest='server', action='store_true')
