@@ -1,0 +1,8 @@
+bin_database_url: http://212.24.106.222:8081
+vms:
+    i-0619c7938d65d53cf: a1.large - eu-central-1a
+    i-063baa2ee72c3ab33: a1.large - eu-central-1b
+    i-0733ddb8b1c753b35: a1.xlarge - eu-central-1b
+    i-064f72b2f9a158570: m5.large - eu-central-1a
+    i-06f9bf39dcdbdfe05: m5.large - eu-central-1b
+    i-0ef37f68caaf87f79: m5.xlarge - eu-central-1b

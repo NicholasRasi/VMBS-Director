@@ -134,6 +134,7 @@ dmypy.json
 # pytype static type analyzer
 .pytype/
 
+.gitignore
 .idea/
 /vms_manager/vms.yml
 other/
@@ -141,5 +142,13 @@ vars/
 config.yml
 rest-client.env.json
 config_vms_manager.yml
+config_vms_manager_aws.yml
+config_vms_manager_azure.yml
 config_vms_manager_test.yml
+config_benchmark_viewer.yml
 config_dashboard.yml
+config_benchmark_tools.yml
+db_aws.json
+db_azure.json
+aws.json
+azure.json

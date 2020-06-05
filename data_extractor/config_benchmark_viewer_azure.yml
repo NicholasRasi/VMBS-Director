@@ -1,0 +1,8 @@
+bin_database_url: http://212.24.106.222:8081
+vms:
+    A2-1: A2-1 - eu
+    A2-2: A2-2 - eu
+    A4-1: A4-1 - eu
+    B2MS-1: B2MS-1 - eu
+    B2MS-2: B2MS-2 - eu
+    B4MS-1: B4MS-1 - eu
