@@ -1,5 +1,4 @@
 import yaml
-import sys
 import subprocess
 import json
 import argparse
@@ -19,6 +18,8 @@ def post_command(command):
             return {"msg": "ok"}, 200
         elif provider == "AZURE":
             if command == "stop":
+                # convert stop command into deallocate because
+                # Azure stops billing only when the VM is deallocated
                 command = "deallocate"
             az_resource_group_name = req["group"]
             azure(command, az_resource_group_name, [id])
