@@ -80,7 +80,7 @@ This file instructs the runner to execute the dd and the simple-cpu benchmark 5 
 
 The runner also collects information about the machine such as the processor type and the amount of memory.
 
-Benchmarks are executed following the Randomized Multiple Interleaved Trials (RMIT) methodology as suggested by
+Benchmarks are executed following the Randomized Multiple Trials (RMT) similar to the methodology suggested by
 > Conducting Repeatable Experiments in Highly Variable Cloud Computing Environments by Ali Abedi and Tim Brecht
 in order to get precise results.
 
