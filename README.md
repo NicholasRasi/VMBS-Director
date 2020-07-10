@@ -131,4 +131,4 @@ We executed the tests for one month on AWS and Azure using the following VMs:
 	- B2MS: vCPU: 2, RAM: 8 GiB
 	- B4MS: vCPU: 4, RAM: 16 GiB
 
-The datasets are available [here](https://mega.nz/folder/lMFTkQLK#uFvAUKTCT2jDfO0mgs5ZPw) to be downloaded.  The results are available [here](https://nicholasrasi.github.io/cloud-performance/data_visualizer).
+The datasets are available [here](https://mega.nz/folder/lMFTkQLK#uFvAUKTCT2jDfO0mgs5ZPw) to be downloaded.  The results are available [here](https://nicholasrasi.github.io/cloud-performance/data_visualizer/time-graphs.html).
