@@ -54,71 +54,30 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link active" href="setup.html">Setup</a>
+          <a class="nav-link" href="setup.html">Setup</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="durations.html">Durations</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="graphs.html">Graphs</a>
-        </li>
-    <li class="nav-item">
-          <a class="nav-link" href="bar-graphs.html">Bar Graphs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="delta-graphs.html">Delta Graphs</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="recap-graphs.html">Recap</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            System
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Sysbench</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#sysbench-cpu">CPU</a></li>
-                <li><a class="dropdown-item" href="#sysbench-io">IO</a></li>
-                <li><a class="dropdown-item" href="#sysbench-memory">Memory</a></li>
-                <li><a class="dropdown-item" href="#sysbench-threads">Threads</a></li>
-
-              </ul>
-            </li>
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Nench</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#nench-cpu">CPU</a></li>
-                <li><a class="dropdown-item" href="#nench-io">IO</a></li>
-                <li><a class="dropdown-item" href="#nench-network">Network</a></li>
-              </ul>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Hardware
+            Graphs
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
-            <a class="dropdown-item" href="#hardware-cpu">CPU</a>
-            <a class="dropdown-item" href="#hardware-io">IO</a>
-            <a class="dropdown-item" href="#hardware-network">Network</a>
+            <a class="dropdown-item" href="time-graphs.html">Time</a>
+            <a class="dropdown-item" href="bar-graphs.html">Bar</a>
+            <a class="dropdown-item" href="delta-graphs.html">Delta</a>
+            <a class="dropdown-item" href="pqi-graphs.html">PQI</a>
+            <a class="dropdown-item disabled" href="#">---</a>
+            <a class="dropdown-item" href="recap-graphs.html">Recap</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Application
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
-            <a class="dropdown-item" href="#application-web">Web</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a>
         </li>
     </div>
   </nav>
@@ -129,19 +88,19 @@
       <div class="col-sm">
         AWS:
         <ul>
-          <li>a1.large: vCPU: 2, RAM: 4 GiB</li>
-          <li>a1.xlarge: vCPU: 4, RAM: 8 GiB</li>
-          <li>m5.large: vCPU: 2, RAM: 8 GiB</li>
-          <li>m5.xlarge: vCPU: 4, RAM: 16 GiB</li>
+          <li>a1.large: vCPU: 2, RAM: 4 GiB, 0.0582 $/H</li>
+          <li>a1.xlarge: vCPU: 4, RAM: 8 GiB, 0.1164 $/H</li>
+          <li>m5.large: vCPU: 2, RAM: 8 GiB, 0.115 $/H</li>
+          <li>m5.xlarge: vCPU: 4, RAM: 16 GiB, 0.23 $/H</li>
         </ul>
       </div>
       <div class="col-sm">
         Azure:
         <ul>
-          <li>A2v2: vCPU: 2, RAM: 4 GiB</li>
-          <li>A4v2: vCPU: 4, RAM: 8 GiB</li>
-          <li>B2MS: vCPU: 2, RAM: 8 GiB</li>
-          <li>B4MS: vCPU: 4, RAM: 16 GiB</li>
+          <li>A2v2: vCPU: 2, RAM: 4 GiB, 0.087 $/H</li>
+          <li>A4v2: vCPU: 4, RAM: 8 GiB, 0.183 $/H</li>
+          <li>B2MS: vCPU: 2, RAM: 8 GiB, 0.096 $/H</li>
+          <li>B4MS: vCPU: 4, RAM: 16 GiB, 0.192 $/H</li>
         </ul>
       </div>
     </div>

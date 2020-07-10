@@ -53,79 +53,45 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
-      	<li class="nav-item">
-        	<a class="nav-link" href="setup.html">Setup</a>
-      	</li>
         <li class="nav-item">
-          <a class="nav-link active" href="#">Durations</a>
+          <a class="nav-link" href="setup.html">Setup</a>
         </li>
-      	<li class="nav-item">
-        	<a class="nav-link" href="graphs.html">Graphs</a>
-      	</li>
-		<li class="nav-item">
-        	<a class="nav-link" href="bar-graphs.html">Bar Graphs</a>
-      	</li>
-      	<li class="nav-item">
-        	<a class="nav-link" href="delta-graphs.html">Delta Graphs</a>
-      	</li>
         <li class="nav-item">
-          <a class="nav-link" href="recap-graphs.html">Recap</a>
+          <a class="nav-link" href="durations.html">Durations</a>
         </li>
-      	<li class="nav-item">
-        	<a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a>
-      	</li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            System
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Sysbench</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#sysbench-cpu">CPU</a></li>
-                <li><a class="dropdown-item" href="#sysbench-io">IO</a></li>
-                <li><a class="dropdown-item" href="#sysbench-memory">Memory</a></li>
-                <li><a class="dropdown-item" href="#sysbench-threads">Threads</a></li>
-
-              </ul>
-            </li>
-            <li class="dropdown-submenu">
-              <a class="dropdown-item dropdown-toggle" href="#">Nench</a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#nench-cpu">CPU</a></li>
-                <li><a class="dropdown-item" href="#nench-io">IO</a></li>
-                <li><a class="dropdown-item" href="#nench-network">Network</a></li>
-              </ul>
-            </li>
-          </ul>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            Hardware
+            Graphs
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
-            <a class="dropdown-item" href="#hardware-cpu">CPU</a>
-            <a class="dropdown-item" href="#hardware-io">IO</a>
-            <a class="dropdown-item" href="#hardware-network">Network</a>
+            <a class="dropdown-item" href="time-graphs.html">Time</a>
+            <a class="dropdown-item" href="bar-graphs.html">Bar</a>
+            <a class="dropdown-item" href="delta-graphs.html">Delta</a>
+            <a class="dropdown-item" href="pqi-graphs.html">PQI</a>
+            <a class="dropdown-item disabled" href="#">---</a>
+            <a class="dropdown-item" href="recap-graphs.html">Recap</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownSystem" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Application
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownSystem">
-            <a class="dropdown-item" href="#application-web">Web</a>
-          </div>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">|</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#aws">AWS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#azure">Azure</a>
         </li>
     </div>
   </nav>
 
   <div class="container-fluid text-center">
 
-    <h1 id="system" class="d-inline-block">AWS</h1>
+    <h1 id="aws" class="d-inline-block">AWS</h1>
+
     <div class="row">
       <div class="col-sm">
         <iframe scrolling="no" frameborder="0" style="position: relative; height: 500px; width: inherit"
@@ -163,7 +129,7 @@
       </div>
     </div>
 
-    <h1 id="system" class="d-inline-block">Azure</h1>
+    <h1 id="azure" class="d-inline-block">Azure</h1>
     <div class="row">
       <div class="col-sm">
         <iframe scrolling="no" frameborder="0" style="position: relative; height: 500px; width: inherit"
