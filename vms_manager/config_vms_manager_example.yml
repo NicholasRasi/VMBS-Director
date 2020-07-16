@@ -1,17 +1,16 @@
 providers:
   aws:
     us-east-1:
-      - i-0ffc735330aa8634a # us-east-1a
+      - i-0ffc735330aa8634a
     eu-central-1:
-      - i-04ccbdfc124d91116 # eu-central-1a
+      - i-04ccbdfc124d91116
 
   azure:
     cloud-bench:
-      - m1-cb # North Europe
-      - m2-cb # North Europe
-      - m3-cb # East US
-      - m4-cb # East US
-      - m5-cb # West Europe
-      - m6-cb # West Europe
-      - m7-cb # West US
-      - m8-cb # West US
+      - m1-cb
+      - m2-cb
+
+  gcp:
+    europe-west3-a:
+      - e2-1
+      - e2-2
