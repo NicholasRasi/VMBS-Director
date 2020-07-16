@@ -28,7 +28,7 @@
         state: absent
     - name: Clone cloud-benchmark repository
       git:
-        repo: 'https://github.com/NicholasRasi/cloud-benchmark.git'
+        repo: 'https://github.com/NicholasRasi/CloudPerformance-Performer.git'
         version: 'arch_arm'
         dest: cloud-benchmark
         force: yes
@@ -61,7 +61,7 @@
         state: absent
     - name: Clone cloud-benchmark-tools repository
       git:
-        repo: 'https://github.com/NicholasRasi/cloud-benchmark-tools.git'
+        repo: 'https://github.com/NicholasRasi/CloudPerformance-PerformerTools.git'
         dest: cloud-benchmark-tools
         force: yes
     - name: Delete env folder (cloud-benchmark-tools)
