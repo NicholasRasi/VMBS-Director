@@ -1,4 +1,0 @@
-ansible[azure]
-boto
-boto3
-flask

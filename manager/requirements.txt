@@ -1,0 +1,6 @@
+ansible[azure]
+boto
+boto3
+flask
+requests
+google-auth
