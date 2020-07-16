@@ -10,6 +10,7 @@ app = Flask(__name__)
 def post_command(command):
     try:
         req = request.get_json()
+        print(req)
         provider = req["provider"]
         id = req["id"]
         if provider == "AWS":
@@ -23,6 +24,10 @@ def post_command(command):
                 command = "deallocate"
             az_resource_group_name = req["group"]
             azure(command, az_resource_group_name, [id])
+            return {"msg": "ok"}, 200
+        elif provider == "GCP":
+            zone = req["zone"]
+            gcp(command, zone, [id])
             return {"msg": "ok"}, 200
     except Exception as e:
         print(str(e))
@@ -41,6 +46,13 @@ def azure(command, resource_group, names):
         json_response = subprocess.check_output(cli_command)
         print(json_response)
 
+def gcp(command, zone, ids):
+    cli_command = ["gcloud", "compute", "instances", command]
+    for id in ids:
+        cli_command.append(id)
+    cli_command.extend(["--zone", zone])
+    json_response = subprocess.check_output(cli_command)
+    print_json(json_response)
 
 def print_json(json_string):
     try:
@@ -95,3 +107,8 @@ if __name__ == "__main__":
                     else:
                         az_command = command
                     azure(az_command, resource_group, names)
+            elif provider == "gcp" and provider in args.providers:
+                for zone in providers[provider]:
+                    print(command + " for " + provider + " zone " + zone)
+                    ids = providers[provider][zone]
+                    gcp(command, zone, ids)
