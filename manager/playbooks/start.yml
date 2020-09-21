@@ -86,6 +86,15 @@
         ansible_ssh_private_key_file: "{{ gcp_key_file }}"
         ansible_user: "{{ gcp_remote_user }}"
       loop: "{{ gcp.results }}"
+    # EGI
+    - name: Add EGI instances to host group
+      ignore_errors: yes
+      add_host:
+        hostname: "{{ item.ip }}"
+        groupname: egi
+        ansible_ssh_private_key_file: "{{ egi_key_file }}"
+        ansible_user: "{{ egi_remote_user }}"
+      loop: "{{ egi_instances_list }}"
 
 - name: Wait for SSH (all)
   hosts: all
