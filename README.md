@@ -1,4 +1,4 @@
-# Cloud Performance - Director
+# VMBS-tool - Director
 
 ### Dashboard
 This component is designed to monitor the benchmarking process.
